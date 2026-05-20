@@ -1,0 +1,63 @@
+{
+  "name": "promise-bridge",
+  "version": "0.1.0",
+  "description": "Native Promise migration helpers for Q-era APIs.",
+  "type": "module",
+  "license": "MIT",
+  "author": "exitdev",
+  "homepage": "https://github.com/iexitdev/promise-bridge#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iexitdev/promise-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iexitdev/promise-bridge/issues"
+  },
+  "keywords": [
+    "promise",
+    "q",
+    "deferred",
+    "denodeify",
+    "nfcall",
+    "typescript",
+    "migration",
+    "replacement",
+    "deprecated",
+    "zero-dependencies"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "test": "vitest run test",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "verify": "npm run typecheck && npm test && npm run build && npm pack --dry-run",
+    "prepublishOnly": "npm run verify"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
